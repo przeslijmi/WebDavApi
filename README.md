@@ -5,6 +5,7 @@
 Curl.
 
 ## Usage example
+
 ```
 // Create api.
 $webDavApi = new WebDavApi('https://example.com/remote.php/webdav/');
@@ -28,6 +29,7 @@ Cite:
 1. Put it somewhere on drive.
 1. Enable `mod_ssl` in Apache and `php_openssl.dll` in php.ini.
 1. Add these lines to your cert in `php.ini`:
+
 ```
 curl.cainfo="C:/.../cacert.pem"
 openssl.cafile="C:/.../cacert.pem"
