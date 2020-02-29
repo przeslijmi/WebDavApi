@@ -2,6 +2,8 @@
 
 ## Requirements
 
+Php 7.3.
+
 Curl.
 
 ## Usage example
