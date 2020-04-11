@@ -8,7 +8,7 @@ Curl.
 
 ## Usage example
 
-```
+```php
 // Create api.
 $webDavApi = new WebDavApi('https://example.com/remote.php/webdav/');
 $webDavApi->setLogin($user, $password);
@@ -46,7 +46,7 @@ openssl.cafile="C:/.../cacert.pem"
 
 Use:
 
-```
+```php
 $webDavApi->setIgnoreSsl(true)
 ```
 
