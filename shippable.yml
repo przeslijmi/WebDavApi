@@ -4,10 +4,11 @@ php:
   - "7.3"
 
 env:
-  - secure: GNRB2HZaOWu4PrxQ8OVX9Bg+Ak6s4y+VUVzcLi6hcRtme85TpZRimPmAZJwP10LIj/d+yE0/vzzKxMmyTfCbJ5pz4f98VTohk0Gci6d6B0LRE214BDR0V2EN26Rj0VTbxmwqAh7cSXakDjt9XqMJykdSwYbGqvjtiSBM7X/yblLtI2ik2xJvP8afOCqKHYNsajvGu2006qnDrwtC8UsqMZXgLyLkrjzv9TixfEQctVQ+iDv5HpftFmN2R42B4Dy+vIUuda5W+tSa+1UgaX5ZgUwtwkBWR7qlJ5bZjuMxo/achN1hbB2+2J9CfXrAwTqEUeojhQOuW1JQft36CC8VWg==
+  - secure: rPngGEXp/L/yFCMP+PVRdPg45ni6ZQz6v5Lsd9OT0oajgowMN3RtPAKsP7qDpI1Ajqhus+fyHCEhZX3kSR1qLikOhSBgLQFjQIyImf6nwoz68oSRg+Lx8CQi6rmR3uaqsg1v60GG/3XDlAnzWSHpBpGL+R+5k5gzSiRcrqjXqwBHLzT4XqFSfUnKVHsIH6nn3IIn0TxjG/3k8TrdIPcRlytgXFm7hkg6sBgiFgxA0HZuCq6NK1QuaLLGaadJPAPllflhIPlupqYEMKWhJg88eLPyu6Lkdx4QigOsU7YBHSijWaEBZOEfE+cUReDeiEj9vahZvqVVFKxmz8fdig38nqH1P1nwiEjkgYGzMNhtrwPqWxqv2R9UPdWKkpRSjWh+j8/Qw+DQ5c4zLhSyAJaDUNMk00ze19L/IIvILRHKSbYZUJlxMIvn7G9ZGX4XFqHu3vVdlqpb63gwuocOl+POVWrFvzgFmDO0/GUWcdyjfkBRqRcTwElgfkjkTpKs9dGddPqAOz74VLJNcURb0ScTTB5ZOx/u1LEkfG/r/6HBkJgrmEoTnAqcG+CfzWU7n2IZ/UCPBdi4mLqF4OMpBnyz3bq7GgiGfsD1IFQX6Q1Tk/zoNz6vhw8HnVj1cAqcr2NEWaTvrA6Krsx+fVhDQx4Uy/K2GlvXfmpDGXm8hqorrFI=
 
 before_script:
   - echo $CONFIG_FOR_TESTING
+  - echo $CONFIG_FOR_TESTING > .config.php
   - composer config -g github-oauth.github.com $GH_TOKEN
   - composer self-update -n
   - composer install --prefer-source --no-interaction
