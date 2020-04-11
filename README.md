@@ -1,10 +1,14 @@
 # Przeslijmi WebDavApi
 
+[![Run Status](https://api.shippable.com/projects/5e4da235124ede0007d6b891/badge?branch=master)]()
+
+[![Coverage Badge](https://api.shippable.com/projects/5e4da235124ede0007d6b891/coverageBadge?branch=master)]()
+
+
 ## Requirements
 
-Php 7.3.
+Only **Php 7.3** and **Curl**. No other dependencies.
 
-Curl.
 
 ## Usage example
 
@@ -25,6 +29,7 @@ $webDavApi->readContents('NewDirectoryName/');
 $contents   = $webDavApi->getContents();
 $isExisting = $webDavApi->doesContentExists('NewDirectoryName/Image');
 ```
+
 
 ## How to connect certificate
 

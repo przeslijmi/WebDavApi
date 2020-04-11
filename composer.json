@@ -1,7 +1,7 @@
 {
   "name": "przeslijmi/webdavapi",
   "description": "PHP library for connecting with WebDavApi.",
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "type": "library",
   "license": "MIT",
   "authors": [
