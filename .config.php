@@ -1,1 +1,6 @@
 <?php declare(strict_types=1);
+
+define('PRZESLIJMI_WEBDAVAPI_TESTING_API_URI',  null);
+define('PRZESLIJMI_WEBDAVAPI_TESTING_API_USER', null);
+define('PRZESLIJMI_WEBDAVAPI_TESTING_API_PASS', null);
+define('PRZESLIJMI_WEBDAVAPI_TESTING_API_PORT', null);

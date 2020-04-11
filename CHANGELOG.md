@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.1.0 - 2020-04-11
+
+- Added `setIgnoreSsl()` method.
+- Added `readContents()` method.
+- Added `getContents()` method.
+- Added `doesContentExists()` method.
+- Reached 100 % code coverage.
+
 ## v1.0.0 - 2020-02-16
 
 - Offical release.

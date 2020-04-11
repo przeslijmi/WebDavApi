@@ -16,7 +16,7 @@ class Curl
      *
      * @var resource
      */
-    private $ch;
+    private $curl;
 
     /**
      * Parent WebDavApi object.
@@ -33,6 +33,13 @@ class Curl
     private $headers = [];
 
     /**
+     * Result contents.
+     *
+     * @var array
+     */
+    private $result;
+
+    /**
      * Constructor.
      *
      * @param WebDavApi $api Parent WebDavApi object.
@@ -46,16 +53,16 @@ class Curl
         $this->api = $api;
 
         // Create curl.
-        $this->ch = curl_init();
+        $this->curl = curl_init();
 
         // Define credentials.
         if ($this->api->hasLogin() === true) {
-            curl_setopt($this->ch, CURLOPT_USERPWD, ( $this->api->getUser() . ':' . $this->api->getPassword() ));
+            curl_setopt($this->curl, CURLOPT_USERPWD, ( $this->api->getUser() . ':' . $this->api->getPassword() ));
         }
 
         // Define defaults.
-        curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($this->ch, CURLOPT_POST, 1);
+        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($this->curl, CURLOPT_POST, 1);
     }
 
     /**
@@ -70,7 +77,7 @@ class Curl
     {
 
         // Define.
-        curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, $request);
+        curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, $request);
 
         return $this;
     }
@@ -91,7 +98,7 @@ class Curl
         $url = str_replace('\\', '/', $url);
 
         // Define.
-        curl_setopt($this->ch, CURLOPT_URL, $url);
+        curl_setopt($this->curl, CURLOPT_URL, $url);
 
         return $this;
     }
@@ -108,7 +115,7 @@ class Curl
     {
 
         // Define.
-        curl_setopt($this->ch, CURLOPT_POSTFIELDS, $postFields);
+        curl_setopt($this->curl, CURLOPT_POSTFIELDS, $postFields);
 
         return $this;
     }
@@ -125,8 +132,7 @@ class Curl
     {
 
         // Define.
-        curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, ( ! $ignore ));
-        curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, ( ! $ignore ));
+        curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, (bool) ( ! $ignore ));
 
         return $this;
     }
@@ -160,17 +166,33 @@ class Curl
 
         // Add headers if were given.
         if (count($this->headers) > 0) {
-            curl_setopt($this->ch, CURLOPT_HTTPHEADER, $this->headers);
+            curl_setopt($this->curl, CURLOPT_HTTPHEADER, $this->headers);
         }
 
         // Create call.
-        $result = curl_exec($this->ch);
+        $this->result = curl_exec($this->curl);
 
         // Serve errors.
-        if (curl_errno($this->ch) === true) {
-            throw new Exception('Curl Error: ' . curl_error($this->ch) . '. With result: ' . var_export($result));
+        if ($this->result === false) {
+
+            // Lvd.
+            $message  = 'Curl Error: ' . curl_error($this->curl) . '. ';
+            $message .= 'With result: ' . var_export($this->result, true) . '.';
+
+            throw new Exception($message);
         }
 
         return $this;
+    }
+
+    /**
+     * Getter for result contents.
+     *
+     * @return mixed
+     */
+    public function getResult()
+    {
+
+        return $this->result;
     }
 }
