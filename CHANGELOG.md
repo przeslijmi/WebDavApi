@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.1 - 2020-04-15
+
+- Changed `phpcs.xml`.
+- Fixed configuration.
+- Added `resources/configSpecimen.php`.
+
 ## v1.1.0 - 2020-04-11
 
 - Added `setIgnoreSsl()` method.
